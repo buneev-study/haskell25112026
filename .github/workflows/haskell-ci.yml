@@ -1,0 +1,81 @@
+name: Haskell CI
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+permissions:
+  contents: read
+
+jobs:
+  task1:
+    name: Task 1 - Count Tags
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: task1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: haskell-actions/setup@v2
+        with:
+          ghc-version: '9.4.8'
+      - run: chmod +x test.sh
+      - run: ./test.sh
+
+  task2:
+    name: Task 2 - Every Third Line
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: task2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: haskell-actions/setup@v2
+        with:
+          ghc-version: '9.4.8'
+      - run: chmod +x test.sh
+      - run: ./test.sh
+
+  task3:
+    name: Task 3 - Extract URLs
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: task3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: haskell-actions/setup@v2
+        with:
+          ghc-version: '9.4.8'
+      - run: chmod +x test.sh
+      - run: ./test.sh
+
+  task4:
+    name: Task 4 - Extract Headers
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: task4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: haskell-actions/setup@v2
+        with:
+          ghc-version: '9.4.8'
+      - run: chmod +x test.sh
+      - run: ./test.sh
+
+  task5:
+    name: Task 5 - Headers in CP866
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: task5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: haskell-actions/setup@v2
+        with:
+          ghc-version: '9.4.8'
+      - run: chmod +x test.sh
+      - run: ./test.sh
