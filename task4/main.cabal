@@ -1,0 +1,21 @@
+cabal-version:   3.0
+name:            main
+version:         0.1.0.0
+license:         MIT
+license-file:    LICENSE
+author:          V Buneev
+maintainer:      buneev@kvazitec.ru
+build-type:      Simple
+extra-doc-files: CHANGELOG.md
+
+common warnings
+    ghc-options: -Wall
+
+executable main
+    import:           warnings
+    main-is:          Main.hs
+    build-depends:    base,
+                      regex-pcre-builtin,
+                      bytestring
+    hs-source-dirs:   .
+    default-language: Haskell2010
