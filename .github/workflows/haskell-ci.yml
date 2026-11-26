@@ -85,6 +85,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y binutils-gold && sudo apt-get install uchardet
       - run: chmod +x test.sh
       - run: ./test.sh
+
  task6:
     name: Task 6 - Headers in CP1251 and koi8r
     runs-on: ubuntu-latest
