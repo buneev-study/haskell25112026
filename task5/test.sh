@@ -4,7 +4,7 @@ set -e
 echo "Installing regex-pcre-builtin..."
 cabal install regex-pcre-builtin --lib
 
-echo "Compiling task4..."
+echo "Compiling task5..."
 cabal build
 
 cleanup() {
@@ -31,22 +31,28 @@ run_test() {
 
     echo "$file_to_pass" | cabal run
 
-    if [ -f "output4.txt" ]; then
-        sed -i 's/\r$//' output4.txt
-        if diff -q "output4.txt" "$expected_file" > /dev/null; then
-            echo "PASS: $test_name"
+    if [ -f "output5.txt" ]; then
+        sed -i 's/\r$//' output5.txt
+        if diff -q "output5.txt" "$expected_file" > /dev/null; then
+            if  [[ "$(uchardet "output5.txt")" == *"IBM866"* ]] || [[ "$(uchardet "output5.txt")" == *"unknown"* ]]
+            then
+                echo "PASS: $test_name"
+            else
+                echo "FAIL: $test_name (wrong encoding output5.txt)"
+                exit 1
+            fi
         else
             echo "FAIL: $test_name (output differs from $expected_file)"
-            diff -u "output4.txt" "$expected_file" || true
+            diff -u "output5.txt" "$expected_file" || true
             exit 1
         fi
     else
-        echo "FAIL: $test_name (output4.txt not created)"
+        echo "FAIL: $test_name (output5.txt not created)"
         exit 1
     fi
 }
 
-run_test "Task 4 - Simple HTML" "simple.html" "simple_expected.html"
-run_test "Task 4 - L1.html" "L1.html" "L1_expected.html"
+run_test "Task 5 - Simple HTML" "simple.html" "simple_expected.html"
+run_test "Task 5 - L1.html" "L1.html" "L1_expected.html"
 
-echo -e "\nTask 4: All tests passed!"
+echo -e "\nTask 5: All tests passed!"
