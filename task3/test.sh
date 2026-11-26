@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
 
-echo "Installing regex-posix..."
-cabal install regex-posix --lib
+echo "Installing regex-pcre-builtin..."
+cabal install regex-pcre-builtin --lib
 
 echo "Compiling task3..."
 cabal build
