@@ -65,6 +65,8 @@ jobs:
       - uses: haskell-actions/setup@v2
         with:
           ghc-version: '9.4.8'
+      - name: Install binutils-gold
+        run: sudo apt-get update && sudo apt-get install -y binutils-gold
       - run: chmod +x test.sh
       - run: ./test.sh
 
@@ -79,5 +81,7 @@ jobs:
       - uses: haskell-actions/setup@v2
         with:
           ghc-version: '9.4.8'
+      - name: Install binutils-gold
+        run: sudo apt-get update && sudo apt-get install -y binutils-gold && sudo apt-get install uchardet
       - run: chmod +x test.sh
       - run: ./test.sh
